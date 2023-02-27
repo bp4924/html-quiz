@@ -43,7 +43,7 @@ body {
 .btn {
   --hue: var(--hue-neutral);
   border: 1px solid hsl(var(var(--hue), 100% 30%));
-  background-color: hsl(var(--hue), 100%, 50%);
+  background-color: hsl(var(--hue), 100%, 20%);
   border-radius: 6px;
   padding: 5px;
   color: beige;
@@ -53,4 +53,23 @@ body {
 
 .btn:hover {
   border-color: red;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+.start-btn,
+.next-btn {
+  width: 20%;
+  height: 40px;
+}
+
+.hide {
+  display: none;
 }
