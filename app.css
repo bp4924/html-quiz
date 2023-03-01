@@ -53,6 +53,7 @@ body {
 
 .btn:hover {
   border-color: red;
+  border-radius: 45%;
 }
 
 .controls {
