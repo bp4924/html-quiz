@@ -5,12 +5,21 @@ const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-button");
 
-let shuffledQuestions, currentQuestionIndex;
+let shuffledQuestions = [],
+  currentQuestionIndex;
 let quizScore = 0;
+
+startButton.addEventListener("click", startGame);
+
+nextButton.addEventListener("click", () => {
+  currentQuestionIndex++;
+  setNextQuestion();
+});
 
 function startGame() {
   startButton.classList.add("hide");
   shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+  console.log(shuffledQuestions);
   currentQuestionIndex = 0;
   questionContainerElement.classList.remove("hide");
   setNextQuestion();
@@ -19,15 +28,19 @@ function startGame() {
 
 function setNextQuestion() {
   resetState();
+  console.log("current question index", currentQuestionIndex);
+  console.log("shuffledQuestions", shuffledQuestions[currentQuestionIndex]);
+
   showQuestion(shuffledQuestions[currentQuestionIndex]);
 }
 
 function showQuestion(question) {
+  console.log("showQuestion", question.question);
   questionElement.innerText = question.question;
   question.answers.forEach((answer) => {
     const button = document.createElement("button");
     button.innerText = answer.text;
-    button.classList.add(btn);
+    button.classList.add("btn");
     if (answer.correct) {
       button.dataset.correct = answer.correct;
     }
@@ -62,6 +75,7 @@ function selectAnswer(e) {
   }
   if ((selectedButton.dataset = correct)) {
     quizScore++;
+    console.log("score", quizScore);
   }
   document.getElementById("right-answers").innerText = quizScore;
 }
@@ -73,11 +87,13 @@ function setStatusClass(element, correct) {
   } else {
     element.classList.add("wrong");
   }
+  console.log("class list", element.classList);
 }
 
 function clearStatusClass(element) {
   element.classList.remove("correct");
   element.classList.remove("wrong");
+  console.log("class list", element.classList);
 }
 
 // question bank

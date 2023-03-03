@@ -18,10 +18,12 @@ body {
 
 .correct {
   --hue: var(var(--hue-correct));
+  background-color: green;
 }
 
 .wrong {
   --hue: var(var(--hue-wrong));
+  background-color: red;
 }
 
 .container {
