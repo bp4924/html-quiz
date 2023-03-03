@@ -8,6 +8,50 @@ const answerButtonsElement = document.getElementById("answer-button");
 let shuffledQuestions, currentQuestionIndex;
 let quizScore = 0;
 
+// reset
+function resetState() {
+  clearStatusClass(document.body);
+  nextButton.classList.add("hide");
+  while (answerButtonsElement.firstChild) {
+    answerButtonsElement.removeChild(answerButtonsElement.firstChild);
+  }
+}
+// q&a logic
+function selectAnswer(e) {
+  const selectedButton = e.target;
+  const correct = selectedButton.dataset.correct;
+
+  setStatusClass(document.body, correct);
+  Array.from(answerButtonsElement.children).forEach((button) => {
+    setStatusClass(button, button.dataset.correct);
+  });
+  if (shuffledQuestions.length > currentQuestionIndex + 1) {
+    nextButton.classList.remove("hide");
+  } else {
+    startButton.innerText = "restart";
+    startButton.classList.remove("hide");
+  }
+  if ((selectedButton.dataset = correct)) {
+    quizScore++;
+  }
+  document.getElementById("right-answers").innerText = quizScore;
+}
+
+function setStatusClass(element, correct) {
+  clearStatusClass(element);
+  if (correct) {
+    element.classList.add("correct");
+  } else {
+    element.classList.add("wrong");
+  }
+}
+
+function clearStatusClass(element) {
+  element.classList.remove("correct");
+  element.classList.remove("wrong");
+}
+
+// question bank
 const questions = [
   {
     question: "Which is not a primative data type in JavaScript?",
