@@ -17,12 +17,12 @@ body {
 }
 
 .correct {
-  --hue: var(var(--hue-correct));
+  --hue: var(--hue-correct);
   background-color: green;
 }
 
 .wrong {
-  --hue: var(var(--hue-wrong));
+  --hue: var(--hue-wrong);
   background-color: red;
 }
 
@@ -44,8 +44,8 @@ body {
 
 .btn {
   --hue: var(--hue-neutral);
-  border: 1px solid hsl(var(var(--hue), 100% 30%));
-  background-color: hsl(var(--hue), 100%, 20%);
+  border: 1px solid hsl(var(--hue), 100%, 30%);
+  background-color: hsl(var(--hue), 100%, 30%);
   border-radius: 6px;
   padding: 5px;
   color: beige;
@@ -55,7 +55,7 @@ body {
 
 .btn:hover {
   border-color: red;
-  border-radius: 45%;
+  border-radius: 30%;
 }
 
 .controls {
@@ -76,3 +76,16 @@ body {
 .hide {
   display: none;
 }
+
+.btn.correct {
+  background-color: green;
+}
+
+.btn.wrong {
+  background-color: red;
+}
+
+/* .btn .correct {
+  background-color: red;
+}
+ */
